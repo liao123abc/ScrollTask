@@ -40,7 +40,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //TODO
+//1.add android widget
+//2.add notification
 //http://javatechig.com/android/app-widgets-example-in-android
+
 
 public class MainActivity extends Activity {
 
