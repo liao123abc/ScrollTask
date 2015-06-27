@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ScrollTask</string>
+    <string name="add_name">Add</string>
+    <string name="detail_name">Detail</string>
+    <string name="modify_name">Modify</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_removeall">Remove All</string>
+    <string name="action_add">Add</string> 
+    <string name="action_delete">Delete</string> 
+    <string name="action_modify">Modify</string> 
+    <string name="action_open">Done</string>
+    <string name="action_done">Done</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="inline_preferences">prefecces</string>
+    <string name="title_checkbox_preference">refer1</string>
+    <string name="title_edittext_preference">edit</string>
+    <string name="summary_list_preference">summary</string>
+    <string name="launch_preferences">launch</string>
+    <string name="title_screen_preference">screen</string>
+    <string name="title_next_screen_toggle_preference">nextscreen</string>
+    <string name="title_intent_preference">title_intent_preference</string>
+    <string name="preference_attributes">preference_attributes</string>
+    <string name="title_parent_preference">title_parent_preference</string>
+    <string name="title_child_preference">title_child_preference</string>
+
+</resources>

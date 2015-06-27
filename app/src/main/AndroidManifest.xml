@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.todo.thomas.scrolltask">
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".detail.DetailActivity"
+            android:label="@string/detail_name" >
+            <intent-filter>
+                <action android:name="com.example.scrolltask.intent.action.DetailView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".detail.ModifyActivity"
+            android:label="@string/modify_name" >
+            <intent-filter>
+                <action android:name="com.example.scrolltask.intent.action.ModifyView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edit.AddActivity"
+            android:label="@string/add_name" >
+            <intent-filter>
+                <action android:name="com.example.scrolltask.intent.action.EditView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name=".myprovider.TaskProvider"
+            android:authorities="com.example.scrolltask"
+            android:multiprocess="false" >
+        </provider>
+
+    </application>
+
+</manifest>

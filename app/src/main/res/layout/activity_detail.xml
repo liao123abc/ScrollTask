@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/titleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="48dp"
+            android:text="Title"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/titleContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/titleTV"
+            android:layout_alignBottom="@+id/titleTV"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/titleTV"
+            android:ems="10"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="22dp"
+            android:layout_alignParentEnd="true">
+            <requestFocus />
+        </TextView>
+
+        <TextView
+            android:id="@+id/levelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="level"
+            android:textSize="23sp"
+            android:layout_below="@+id/titleContent"
+            android:layout_centerHorizontal="true" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:numStars="10"
+            android:stepSize="1"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/levelTV"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/detailTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/titleTV"
+            android:layout_below="@+id/ratingBar"
+            android:layout_marginTop="38dp"
+            android:text="detail"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/detailContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/detailTV"
+            android:layout_alignBottom="@+id/detailTV"
+            android:layout_toRightOf="@+id/detailTV"
+            android:ems="10"
+            android:layout_alignRight="@+id/titleContent"
+            android:layout_alignLeft="@+id/titleContent"
+            android:layout_alignEnd="@+id/titleContent" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Ontop?"
+            android:id="@+id/checkBox"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:textSize="23sp"
+            android:layout_below="@id/detailContent"/>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="State"
+            android:id="@+id/switchfinish"
+            android:layout_below="@+id/checkBox"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:textOff="@string/action_done"
+            android:textOn="@string/action_open"/>
+
+    </RelativeLayout>
+
+</ScrollView>
