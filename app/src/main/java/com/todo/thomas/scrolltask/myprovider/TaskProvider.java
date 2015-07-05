@@ -20,7 +20,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 
 public class TaskProvider extends ContentProvider{
-	private static final String LOG_TAG = "dongmin.liao.taskprovider";
+	private static final String LOG_TAG = "TaskProvider";
 	
 	private static final String DB_NANE = "Task.db";
 	private static final String DB_TABLE = "TaskTable";

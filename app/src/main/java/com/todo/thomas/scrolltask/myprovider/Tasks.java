@@ -21,9 +21,8 @@ public class Tasks {
 	
 	public static final String METHOD_GET_ITEM_COUNT = "METHOD_GET_ITEM_COUNT";
 	public static final String KEY_ITEM_COUNT = "KEY_ITEM_COUNT";
-	
-	//��Ψһ�ر�ʶ��һ���ض���Content Provider����ˣ��ⲿ������һ��ʹ��Content Provider���ڵ�package��������ʹ������Ψһ�ġ�����ûҪ��
-	public static final String AUTHORITY = "com.example.scrolltask";
+
+	public static final String AUTHORITY = "com.todo.thomas.scrolltask.myprovider";
 	
 	/*Match Code*/
 	public static final int ITEM =1;

@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.os.RemoteException;
 
 public class TaskCpAdapter {
-	private static final String LOG_TAG = "dongmin.liao.scrolltask";
+	private static final String LOG_TAG = "TaskCpAdapter";
 	private ContentResolver resolver = null;
 	
 	public TaskCpAdapter(Context context) {

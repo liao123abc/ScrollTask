@@ -50,9 +50,32 @@
 
         <provider
             android:name=".myprovider.TaskProvider"
-            android:authorities="com.example.scrolltask"
+            android:authorities="com.todo.thomas.scrolltask.myprovider"
             android:multiprocess="false" >
         </provider>
+
+        <receiver android:name=".widget.MyWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidgetprovider"/>
+        </receiver>
+
+        <receiver android:name=".widget.MyWidgetIntentReceiver"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.toddo.thomas.intent.action.UPDATE_WIDGET"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidgetprovider"/>
+        </receiver>
+
+
 
     </application>
 

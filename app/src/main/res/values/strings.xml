@@ -29,4 +29,13 @@
     <string name="title_parent_preference">title_parent_preference</string>
     <string name="title_child_preference">title_child_preference</string>
 
+    <string-array
+        name = "widget_string_array">
+        <item>A string, which can include styling tags. </item>
+        <item>Beware that you must escape apostrophes and quotation marks. </item>
+        <item>For more information about how to properly style and format your strings</item>
+        <item>An array of strings that can be referenced from the application.</item>
+    </string-array>
+
+
 </resources>

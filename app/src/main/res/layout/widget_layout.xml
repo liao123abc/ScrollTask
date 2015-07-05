@@ -10,7 +10,8 @@
         android:id="@+id/buttonContainer"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true"
+        android:background="@color/pink">
 
         <Button
             android:id="@+id/sync_button"
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:paddingBottom="5dp"
-            android:text=""
+            android:text="test"
             android:textColor="#fcfcfc"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -46,9 +47,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:maxLines="5"
-            android:text=""
+            android:text="adfasdfasdfasdfasdfadfdfads"
             android:textColor="#fcfcfc"
-            android:textSize="13sp"
+            android:textSize="26sp"
             android:textStyle="normal" />
     </LinearLayout>
 
