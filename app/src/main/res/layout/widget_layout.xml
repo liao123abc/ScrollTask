@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5sp"
-    android:background="@drawable/appwidget_dark_bg"
+    android:background="@color/pink"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -17,9 +17,11 @@
             android:id="@+id/sync_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerInParent="true"
             android:background="@drawable/ic_sync_button"
-            android:text="" />
+            android:text=""
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
     <LinearLayout
@@ -31,26 +33,10 @@
         android:orientation="vertical"
         android:padding="8dp" >
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="fill_parent"
+        <ListView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:paddingBottom="5dp"
-            android:text="test"
-            android:textColor="#fcfcfc"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/desc"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="5"
-            android:text="adfasdfasdfasdfasdfadfdfads"
-            android:textColor="#fcfcfc"
-            android:textSize="26sp"
-            android:textStyle="normal" />
+            android:id="@+id/listView" />
     </LinearLayout>
 
 </RelativeLayout>
