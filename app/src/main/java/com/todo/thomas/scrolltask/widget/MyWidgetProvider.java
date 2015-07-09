@@ -61,6 +61,14 @@ public class MyWidgetProvider extends AppWidgetProvider{
         remoteViews.setRemoteAdapter(appWidgetId, R.id.listView, svcIntent);
         return remoteViews;
     }
+
+    public static PendingIntent buildButtonPendingIntent(Context context) {
+        Log.d(TAG, "buildButtonPendingIntent");
+        //initiate widget update request
+        Intent intent = new Intent();
+        intent.setAction(WidgetUtils.WIDGET_UPDATE_ACTION);
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
     /*
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -83,15 +91,7 @@ public class MyWidgetProvider extends AppWidgetProvider{
 
     }
 
-    public static PendingIntent buildButtonPendingIntent(Context context) {
-        ++MyWidgetIntentReceiver.clickCount;
 
-        Log.d(TAG, "buildButtonPendingIntent");
-        //initiate widget update request
-        Intent intent = new Intent();
-        intent.setAction(WidgetUtils.WIDGET_UPDATE_ACTION);
-        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
 
     private static CharSequence getDesc() {
         return "Sync to see some of our funniest joke collections";

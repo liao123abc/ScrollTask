@@ -30,9 +30,9 @@ public class MyWidgetIntentReceiver extends BroadcastReceiver{
 //        remoteViews.setTextViewText(R.id.title, getTitle());
 //        remoteViews.setTextViewText(R.id.desc, getDesc(context));
 
-//        //re-registering for click listener
-//        remoteViews.setOnClickPendingIntent(R.id.sync_button,
-//                MyWidgetProvider.buildButtonPendingIntent(context));
+        //re-registering for click listener
+        remoteViews.setOnClickPendingIntent(R.id.sync_button,
+                MyWidgetProvider.buildButtonPendingIntent(context));
 //
 //        MyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
     }

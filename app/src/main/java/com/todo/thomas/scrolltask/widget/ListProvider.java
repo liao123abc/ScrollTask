@@ -7,9 +7,12 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 import com.todo.thomas.scrolltask.R;
+import com.todo.thomas.scrolltask.myprovider.Task;
+import com.todo.thomas.scrolltask.myprovider.TaskCpAdapter;
 
 /**
  * Created by Administrator on 2015/7/5.
@@ -20,6 +23,9 @@ public class ListProvider implements RemoteViewsService.RemoteViewsFactory{
     private ArrayList listItemList = new ArrayList();
     private Context context;
     private int appWidgetId;
+    private TaskCpAdapter mCpAdapter;
+    //TODO: use asyncTask to get data from database
+    private LinkedList<Task> tasks = null;
 
     public static class ListItem {
         public String heading;
@@ -47,14 +53,25 @@ public class ListProvider implements RemoteViewsService.RemoteViewsFactory{
         appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                 AppWidgetManager.INVALID_APPWIDGET_ID);
 
+        //get data from database
+        mCpAdapter = new TaskCpAdapter(context);
+
+        //get all tasks
+        tasks = mCpAdapter.getAllTasks();
+
+
+
         populateListItem();
     }
 
     private void populateListItem() {
-        for (int i = 0; i < testCount; i++) {
+        int count = tasks.size();
+
+        for (int i = 0; i < count; i++) {
             ListItem listItem = new ListItem();
-            listItem.heading = "Heading" + i;
-            listItem.content = testValues[i];
+            Task task = tasks.get(i);
+            listItem.heading = task.getName();
+            listItem.content = task.getDetail();
             listItemList.add(listItem);
         }
     }

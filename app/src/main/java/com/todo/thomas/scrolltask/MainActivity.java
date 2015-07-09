@@ -220,6 +220,9 @@ public class MainActivity extends Activity {
 			////we have to update the tasks on time
 			tasks = mCpAdapter.getAllTasks();
 			mListAdapter.notifyDataSetChanged();
+
+            //TODO sent intent to notify the appwidget to update views
+
 		}
     }
     
