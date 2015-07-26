@@ -11,12 +11,19 @@ import android.widget.RemoteViewsService;
 public class WidgetService extends RemoteViewsService{
     private final static String TAG = "WidgetService";
 
+    public WidgetService() {
+        Log.v(TAG, "WidgetService start up");
+    }
+
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
         int appWidgetId = intent.getIntExtra(
                 AppWidgetManager.EXTRA_APPWIDGET_ID,
                 AppWidgetManager.INVALID_APPWIDGET_ID);
-        Log.v(TAG, "appWidgetId is : " + appWidgetId);
-        return (new ListProvider(this.getApplicationContext(), intent));
+        //Log.v(TAG, "appWidgetId is : " + appWidgetId);
+        return (new RemoteListViewFactory(this.getApplicationContext(), intent));
     }
+
+
+
 }

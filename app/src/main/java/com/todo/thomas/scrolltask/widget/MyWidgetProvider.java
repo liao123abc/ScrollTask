@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.RemoteViews;
 
 import com.todo.thomas.scrolltask.R;
@@ -36,6 +37,16 @@ import com.todo.thomas.scrolltask.R;
 public class MyWidgetProvider extends AppWidgetProvider{
     private static final String TAG = "MyWidgetProvider";
 
+    private static final String WIDGET_ID = "widgetId";
+
+    /*
+         * this method is called every 30 mins as specified on widgetinfo.xml this
+         * method is also called on every phone reboot from this method nothing is
+         * updated right now but instead RetmoteFetchService class is called this
+         * service will fetch data,and send broadcast to WidgetProvider this
+         * broadcast will be received by WidgetProvider onReceive which in turn
+         * updates the widget
+         */
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         /*int[] appWidgetIds holds ids of multiple instance
@@ -54,21 +65,68 @@ public class MyWidgetProvider extends AppWidgetProvider{
     private RemoteViews updateWidgetListView(Context context, int appWidgetId) {
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
 
+        //sync the listview
+        remoteViews.setOnClickPendingIntent(R.id.sync_button, buildButtonPendingIntent(context));
+
+        //start up the WidgetService
         Intent svcIntent = new Intent(context, WidgetService.class);
+
         svcIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         svcIntent.setData(Uri.parse(svcIntent.toUri(Intent.URI_INTENT_SCHEME)));
 
-        remoteViews.setRemoteAdapter(appWidgetId, R.id.listView, svcIntent);
+        //remoteViews.setRemoteAdapter(appWidgetId, R.id.listView, svcIntent);
+        remoteViews.setRemoteAdapter(R.id.listView, svcIntent);
+
         return remoteViews;
     }
 
+    //TODO
     public static PendingIntent buildButtonPendingIntent(Context context) {
         Log.d(TAG, "buildButtonPendingIntent");
         //initiate widget update request
         Intent intent = new Intent();
-        intent.setAction(WidgetUtils.WIDGET_UPDATE_ACTION);
+        intent.setAction(WidgetUtils.SYNC_CLICKED);
+
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
+
+    private void onUpdate(Context context) {
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance
+                (context);
+
+        // Uses getClass().getName() rather than MyWidget.class.getName() for
+        // portability into any App Widget Provider Class
+        ComponentName thisAppWidgetComponentName =
+                new ComponentName(context.getPackageName(),getClass().getName()
+                );
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(
+                thisAppWidgetComponentName);
+        onUpdate(context, appWidgetManager, appWidgetIds);
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+
+        Log.d(TAG, "receive intent!");
+        if(WidgetUtils.SYNC_CLICKED.equals(intent.getAction())) {
+            //AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            //appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds[i], R.id.listViewWidget);
+
+            Log.d(TAG, "receive clicked intent!");
+            final AppWidgetManager mgr = AppWidgetManager.getInstance(context);
+            final ComponentName cn = new ComponentName(context, MyWidgetProvider.class);
+
+            //notify the list to update,but have to re-get the data from database
+            //so set the provider to exported
+            mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn), R.id.listView);
+
+            //onUpdate(context);
+
+        }
+        super.onReceive(context, intent);
+    }
+
+
     /*
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
