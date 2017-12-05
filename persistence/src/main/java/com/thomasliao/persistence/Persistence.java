@@ -15,30 +15,21 @@ public class Persistence {
 
     private Context appContext;
 
+    public static final String ENCRYPTED_DB_NAME = "short-writing-encrypted.db";
+    public static final String DB_NAME = "short-writing.db";
+
     public static final boolean ENCRYPTED = false;
 
-    private DaoSession noteDaoSession;
-    private DaoSession userDaoSession;
+    private DaoSession daoSession;
+
+    ToDoManager toDoManager;
 
     public Persistence(Context appContext) {
         this.appContext = appContext;
 
         //初始化的时候建立note session
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(appContext, ENCRYPTED ? "notes-db-encrypted" : "notes-db");
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(appContext, ENCRYPTED ? ENCRYPTED_DB_NAME : DB_NAME);
         Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
-        noteDaoSession = new DaoMaster(db).newSession();
-
-        //初始化的时候建立user session
-        DaoMaster.DevOpenHelper helper1 = new DaoMaster.DevOpenHelper(appContext, ENCRYPTED ? "users-db-encrypted" : "users-db");
-        Database db1 = ENCRYPTED ? helper1.getEncryptedWritableDb("super-secret") : helper1.getWritableDb();
-        userDaoSession = new DaoMaster(db1).newSession();
-    }
-
-    public DaoSession getNoteDaoSession() {
-        return noteDaoSession;
-    }
-
-    public DaoSession getUserDaoSession() {
-        return userDaoSession;
+        daoSession = new DaoMaster(db).newSession();
     }
 }
