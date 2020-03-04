@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
     private final static int ADD_TASK_ACTIVITY    = 1;
     private final static int EDIT_TASK_ACTIVITY   = 2;
     private final static int DELETE_TASK_ACTIVITY = 3;
-    
+    //test
     private TaskCpAdapter mCpAdapter;
     private TaskListAdapter mListAdapter;
     private TaskObserver observer;
